@@ -16,11 +16,16 @@ rand = "0.7.3"
 reqwest = { version = "0.11.10", features = ["json", "cookies", "blocking"] }
 serde_json = "1.0.81"
 tokio = { version = "1.21.0", features = ["full"] }
+hex = "0.4.3"
 
-aptos = { path = "../../crates/aptos" }
+aptos-genesis = { path = "../../crates/aptos-genesis", features = ["testing"] }
+aptos-global-constants = { path = "../../config/global-constants" }
+aptos = { path = "../../crates/aptos", features = ["fuzzing"] }
 aptos-logger = { path = "../../crates/aptos-logger" }
 aptos-rest-client = { path = "../../crates/aptos-rest-client" }
 aptos-sdk = { path = "../../sdk" }
+aptos-types = { path = "../../types" }
+aptos-keygen = { path = "../../crates/aptos-keygen" }
 
 forge = { path = "../forge" }
 
