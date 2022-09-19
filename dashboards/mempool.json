@@ -388,39 +388,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 18 },
       "id": 93,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Duplicate (Idempotent) Txn Rate",
       "description": "Rate at which duplicate (idempotent) txns are received at mempool",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -429,33 +401,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "txns/s" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "txns/s",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -467,39 +444,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 18 },
       "id": 60,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Client-expired txns",
       "description": "rate of number of transactions that expired in mempool based on client-specified expiration time",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -508,33 +457,39 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} : {{status}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "min": 0, "show": true, "label": "txns" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "min": 0,
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "txns",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -546,39 +501,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 18 },
       "id": 62,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "System-expired Txns",
       "description": "Rate of number of transactions that expired in mempool based on mempool-specified expiration time",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -587,33 +514,39 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} : {{status}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "min": 0, "show": true, "label": "txns" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "min": 0,
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "txns",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -625,39 +558,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 26 },
       "id": 30,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Successful transaction validation rate",
       "description": "rate of transactions that were successfully validated before mempool insertion\n",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -668,33 +573,39 @@
           "format": "time_series"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "min": 0, "show": true, "label": "txns/s" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "min": 0,
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "txns/s",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -706,39 +617,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 26 },
       "id": 94,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "VM Failed Txns Rate",
       "description": "rate of submitted txns that failed to pass the VM validation",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -747,33 +630,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} \u003c- ({{network}} network:{{sender}})"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "txn / s" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "txn / s",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -785,39 +673,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 26 },
       "id": 96,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Failed Mempool Insertion Rate",
       "description": "rate of transactions that passed VM validation but were rejected from mempool",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -826,33 +686,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} \u003c- ({{network}} network:{{sender}}) -  {{status}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "failures / s" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "failures / s",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -878,39 +743,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 35 },
       "id": 100,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Timeline Index",
       "description": "number of transactions ready for broadcast in core mempool ",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -919,33 +756,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "# keys" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "# keys",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -957,39 +799,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 35 },
       "id": 102,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Priority Index",
       "description": "transactions ready for consensus",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -998,33 +812,38 @@
           "legendFormat": "{{kubernetes_pod_name}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "# keys" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "# keys",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1036,39 +855,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 35 },
       "id": 72,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Parking Lot Index",
       "description": "number of transactions in parking lot index. These transactions are not ready for broadcast or consensus",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1077,33 +868,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "# keys" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "# keys",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1115,39 +911,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 43 },
       "id": 121,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Mempool size (bytes)",
       "description": "total size in bytes of transactions in mempool",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "B",
@@ -1158,33 +926,39 @@
           "format": "time_series"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "bytes", "logBase": 1, "min": 0, "show": true, "label": "bytes" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "bytes",
+          "min": 0,
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "bytes",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1210,39 +984,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 52 },
       "id": 38,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Average Broadcast Size",
       "description": "average number of transactions in a single broadcast",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1251,33 +997,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} -\u003e ({{network}})"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "txns / broadcast" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "txns / broadcast",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1289,39 +1040,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 52 },
       "id": 24,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Broadcasted Txns Rate",
       "description": "rate of transactions broadcasted to other peers",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1332,33 +1055,39 @@
           "format": "time_series"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "min": 0, "show": true, "label": "txns/s" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "min": 0,
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "txns/s",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1370,39 +1099,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 52 },
       "id": 48,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Broadcast Rate",
       "description": "avg number of broadcasts / sec",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1411,33 +1112,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} -\u003e ({{network}})"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "broadcasts / sec" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "broadcasts / sec",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1449,74 +1155,51 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 60 },
       "id": 56,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Average Broadcast Execution Latency",
       "description": "avg time it takes to execute a broadcast",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
           "datasource": { "type": "prometheus", "uid": "${Datasource}" },
-          "expr": "rate(aptos_broadcast_latency_sum{chain_name=~\"$chain_name\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / rate(aptos_broadcast_latency_count{chain_name=~\"$chain_name\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])",
+          "expr": "rate(aptos_mempool_broadcast_latency_sum{chain_name=~\"$chain_name\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval]) / rate(aptos_mempool_broadcast_latency_count{chain_name=~\"$chain_name\", namespace=~\"$namespace\", kubernetes_pod_name=~\"$kubernetes_pod_name\", role=~\"$role\"}[$interval])",
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} -\u003e ({{network}})"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "show": true, "label": "secs / broadcast" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "secs / broadcast",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1528,39 +1211,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 60 },
       "id": 32,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Average Broadcast Roundtrip Time",
       "description": "average time b/w broadcast sent and ACK coming back for it",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1569,33 +1224,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} -\u003e ({{network}})"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1607,39 +1266,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 60 },
       "id": 50,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Pending Broadcasts",
       "description": "number of sent broadcasts awaiting an ACK",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1648,33 +1279,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} -\u003e ({{network}})"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "# broadcasts" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "# broadcasts",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1686,39 +1322,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 68 },
       "id": 106,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Expired Rebroadcast Rate",
       "description": "rate of broadcasts that are retrying expired braodcasts (that did not get back an ACK in window of time)",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1727,33 +1335,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} -\u003e {{network}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "expired / s" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "expired / s",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1765,39 +1378,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 68 },
       "id": 108,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Retry Rebroadcast",
       "description": "rate of broadcasts that are retrying past broadcasts that received a retry ACK",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1806,33 +1391,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} -\u003e ({{network}})"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1844,39 +1433,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 68 },
       "id": 110,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Backpressure Broadcast",
       "description": "rate of broadcasts that were executed as a backpressure broadcast",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1885,33 +1446,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} -\u003e {{network}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -1937,39 +1502,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 77 },
       "id": 8,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Accepted Transaction Commit Rate",
       "description": "Rate of accepted transactions committed per second (notified from state sync)",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -1980,33 +1517,39 @@
           "format": "time_series"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "min": 0, "show": true, "label": "accepted txns / sec" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "min": 0,
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "accepted txns / sec",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2018,39 +1561,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 77 },
       "id": 44,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Rejected Transaction Commit Rate",
       "description": "rate of rejected committed transactions (notified from consensus)",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2059,33 +1574,38 @@
           "legendFormat": "{{kubernetes_pod_name}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "txns/sec" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "txns/sec",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2097,39 +1617,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 77 },
       "id": 6,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Block size",
       "description": "Average size of consensus blocks pulled from mempool",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2140,33 +1632,39 @@
           "format": "time_series"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "min": 0, "show": true, "label": "avg block size" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "min": 0,
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "avg block size",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2178,39 +1676,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 85 },
       "id": 14,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Avg latency handle commit (accepted)",
       "description": "average time it takes for mempool to process a commit of accepted transactions (sent from state sync)",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2221,33 +1691,38 @@
           "format": "time_series"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "min": 0, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "min": 0,
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2259,39 +1734,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 85 },
       "id": 46,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Avg latency handle commit (rejected)",
       "description": "avg time it takes to process committed rejected txns",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2300,33 +1747,37 @@
           "legendFormat": "{{kubernetes_pod_name}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2338,39 +1789,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 85 },
       "id": 12,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Avg latency for get_block",
       "description": "Avg time it takes for consensus to pull block from mempool",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2381,33 +1804,37 @@
           "format": "time_series"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2433,39 +1860,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 94 },
       "id": 26,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Incoming events rate",
       "description": "rate of shared mempool events from peers",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2476,33 +1875,39 @@
           "format": "time_series"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "min": 0, "show": true, "label": "events/s" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "min": 0,
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "events/s",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2514,39 +1919,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 94 },
       "id": 36,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Shared Mempool Task Start Latency",
       "description": "average time it takes for mempool to start an async task",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2555,33 +1932,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} - {{task}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2593,39 +1974,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 94 },
       "id": 52,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Average Txn Processing Latency",
       "description": "avg time it takes to process incoming transactions, per incoming submission",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2634,33 +1987,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} \u003c- ({{network}} network:{{sender}})"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "show": true, "label": "sec / txn submission" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "sec / txn submission",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2672,39 +2030,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 102 },
       "id": 54,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Average VM Validation Latency",
       "description": "avg time it takes to VM-validate txns in a submission",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2713,33 +2043,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2751,39 +2085,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 102 },
       "id": 98,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Average DB Read Latency",
       "description": "latency of db read when validating transaction",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2792,33 +2098,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2830,39 +2140,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 102 },
       "id": 122,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Main loop latency",
       "description": "Duration of each run of the event loop",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2871,33 +2153,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "s", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "s",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -2923,39 +2209,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 111 },
       "id": 78,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Mempool Service Timeout",
       "description": "number of timeouts on a mempool service request (from consensus/state sync)",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -2964,33 +2222,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} - {{type}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3002,39 +2264,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 111 },
       "id": 80,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "DB error",
       "description": "number of times a DB error occurred",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3043,33 +2277,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3081,39 +2319,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 111 },
       "id": 82,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "JSON RPC Callback Timeout",
       "description": "number of timeouts in callback to JSON RPC",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3122,33 +2332,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3160,39 +2374,11 @@
       "gridPos": { "h": 7, "w": 8, "x": 0, "y": 119 },
       "id": 84,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Network Send Fail",
       "description": "number of times a aptos network send failed",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3201,33 +2387,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3239,39 +2429,11 @@
       "gridPos": { "h": 7, "w": 8, "x": 8, "y": 119 },
       "id": 86,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "VM Reconfiguration Failure",
       "description": "number of times reconfiguration of VM failed",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3280,33 +2442,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3318,39 +2484,11 @@
       "gridPos": { "h": 7, "w": 8, "x": 16, "y": 119 },
       "id": 88,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Core Mempool Invariant Violation",
       "description": "number of times core mempool invariant was violated",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3359,33 +2497,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3397,39 +2539,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 126 },
       "id": 118,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Unexpected Network Messages",
       "description": "rate of unexpected network messages received",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3438,33 +2552,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} \u003c- {{network}}:{{peer}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3490,39 +2608,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 135 },
       "id": 90,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Garbage Collection Event Rate",
       "description": "Number of times garbage-collection event occurred (regardless of how many txns were actually removed in the event)",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3531,33 +2621,38 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true, "label": "events / s" },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisLabel": "events / s",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3569,39 +2664,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 135 },
       "id": 104,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "GC Latency",
       "description": "how long a transaction stayed in mempool before being garbage-collected",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3610,33 +2677,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3662,39 +2733,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 144 },
       "id": 66,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Dropped Messages",
       "description": "number of messages dropped from mempool channel sender",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3703,33 +2746,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3741,39 +2788,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 144 },
       "id": 70,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Messages Enqueued Rate",
       "description": "rate of messages being enqueued to be sent out",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3782,33 +2801,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3820,39 +2843,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 144 },
       "id": 68,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Messages Dequeued Rate",
       "description": "Rate of messages dequeued from mempool network sender",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3861,33 +2856,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3899,39 +2898,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 152 },
       "id": 119,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Messages Queued",
       "description": "Messages currently queued to be sent out",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -3940,33 +2911,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -3978,39 +2953,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 8, "y": 152 },
       "id": 114,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "Sent ACKs (backoff/retry)",
       "description": "rate of backoff/retry ACKs sent",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -4019,33 +2966,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} -\u003e {{network}} - {{type}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -4057,39 +3008,11 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 152 },
       "id": 116,
       "isNew": false,
-      "renderer": "flot",
       "span": 0,
       "title": "ACKs Received",
       "description": "rate of retry/backpressure ACKs received",
       "transparent": false,
-      "type": "graph",
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 0,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "type": "timeseries",
       "targets": [
         {
           "refId": "A",
@@ -4098,33 +3021,37 @@
           "legendFormat": "{{kubernetes_pod_name}}:{{role}} \u003c- {{network}} - {{type}}"
         }
       ],
-      "tooltip": { "shared": true, "value_type": "individual" },
-      "xaxis": { "format": "", "logBase": 0, "show": true },
-      "yaxes": [
-        { "format": "short", "logBase": 1, "show": true },
-        { "format": "short", "logBase": 1, "show": true }
-      ],
+      "options": {
+        "legend": { "calcs": [], "displayMode": "list", "placement": "bottom" },
+        "tooltip": { "mode": "multi" }
+      },
       "fieldConfig": {
         "defaults": {
-          "unit": "",
-          "color": { "mode": "" },
-          "thresholds": { "mode": "", "steps": null },
+          "unit": "short",
+          "color": { "mode": "palette-classic" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
           "custom": {
-            "axisPlacement": "",
+            "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "",
-            "lineInterpolation": "",
-            "lineWidth": 0,
-            "pointSize": 0,
-            "showPoints": "",
+            "gradientMode": "none",
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
             "spanNulls": false,
             "hideFrom": { "legend": false, "tooltip": false, "viz": false },
             "lineStyle": { "fill": "" },
-            "scaleDistribution": { "type": "" },
-            "stacking": { "group": "", "mode": "" },
-            "thresholdsStyle": { "mode": "" }
+            "scaleDistribution": { "type": "linear" },
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
           }
         }
       }
@@ -4234,8 +3161,8 @@
         "datasource": null,
         "refresh": 2,
         "options": [
-          { "text": "auto", "value": "$__auto_interval_interval", "selected": true },
-          { "text": "1m", "value": "1m", "selected": false },
+          { "text": "auto", "value": "$__auto_interval_interval", "selected": false },
+          { "text": "1m", "value": "1m", "selected": true },
           { "text": "5m", "value": "5m", "selected": false },
           { "text": "10m", "value": "10m", "selected": false },
           { "text": "30m", "value": "30m", "selected": false },
@@ -4305,7 +3232,7 @@
   },
   "refresh": false,
   "schemaVersion": 37,
-  "version": 22,
+  "version": 24,
   "links": [
     {
       "title": "Other Dashboards",
