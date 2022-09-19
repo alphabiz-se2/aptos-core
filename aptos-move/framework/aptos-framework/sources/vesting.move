@@ -662,7 +662,7 @@ module aptos_framework::vesting {
         contract_creation_seed: vector<u8>,
     ): (signer, SignerCapability) acquires AdminStore {
         let admin_store = borrow_global_mut<AdminStore>(signer::address_of(admin));
-        let seed = bcs::to_bytes(admin);
+        let seed = bcs::to_bytes(&signer::address_of(admin));
         vector::append(&mut seed, bcs::to_bytes(&admin_store.nonce));
         admin_store.nonce = admin_store.nonce + 1;
 
@@ -764,13 +764,13 @@ module aptos_framework::vesting {
     ): address acquires AdminStore {
 
         let vesting_schedule = create_vesting_schedule(
-            vector[
-                fixed_point32::create_from_rational(3, 48),
-                fixed_point32::create_from_rational(2, 48),
-                fixed_point32::create_from_rational(1, 48),
-            ],
-            timestamp::now_seconds() + VESTING_SCHEDULE_CLIFF,
-            VESTING_PERIOD,
+        vector[
+        fixed_point32::create_from_rational(3, 48),
+        fixed_point32::create_from_rational(2, 48),
+        fixed_point32::create_from_rational(1, 48),
+        ],
+        timestamp::now_seconds() + VESTING_SCHEDULE_CLIFF,
+        VESTING_PERIOD,
         );
 
         let admin_address = signer::address_of(admin);
@@ -792,7 +792,7 @@ module aptos_framework::vesting {
             admin_address,
             admin_address,
             commission_percentage,
-            vector[],
+        vector[],
         )
     }
 
